@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Project 4</title>
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bower_components/bootstrap/dist/css/bootstrap.min.css') }}">
+	<!--	<link rel="stylesheet" href="{{ url_for('static', filename='bower_components/bootstrap/dist/css/bootstrap.min.css') }}">-->
+	<link rel="stylesheet" href="{{ url_for('static', filename='bower_components/Ionicons/css/ionicons.min.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='bower_components/font-awesome/css/font-awesome.min.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='dist/css/AdminLTE.min.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='dist/css/skins/skin-blue.min.css') }}">
+	<link rel="icon" type="image/png" href="{{ url_for('static', filename='images/b.png') }}">
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>  -->
+</head>
+
+<body class="hold-transition skin-blue sidebar-mini">
+	<div class="wrapper">
+		<header class="main-header">
+			<a href="/" class="logo">
+				<span class="logo-mini"><b>A</b>D</span>
+				<span class="logo-lg"><b>Admin</b>Manh</span>
+			</a>
+			<nav class="navbar navbar-static-top" role="navigation">
+				<div class="navbar-custom-menu">
+					<ul class="nav navbar-nav">
+						<li class="dropdown user user-menu">
+							<!-- Menu Toggle Button -->
+							<a class="dropdown-toggle" data-toggle="dropdown">
+								<!-- The user image in the navbar-->
+								<img src="{{ url_for('static', filename = 'images/ong.jpg') }}" class="user-image" alt="User Image">
+								<span class="hidden-xs">Trần Tiến Mạnh</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+		</header>
+		<aside class="main-sidebar" style="background-image: url('{{ url_for('static',filename='images/doc.png')}}');">
+			<section class="sidebar">
+
+				<!-- Sidebar user panel (optional) -->
+				<div class="user-panel">
+					<div class="pull-left image">
+						<img src="{{ url_for('static', filename='images/manh.jpg') }}" class="img-circle" alt="User Image">
+					</div>
+					<div class="pull-left info">
+						<p>Tran Tiên Manh</p>
+						<a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+					</div>
+				</div>
+				<form action="#" method="get" class="sidebar-form">
+					<div class="input-group">
+						<input type="text" name="q" class="form-control" placeholder="Search...">
+						<span class="input-group-btn">
+							<button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+							</button>
+						</span>
+					</div>
+
+				</form>
+
+				<ul class="sidebar-menu" data-widget="tree">
+					<li class="active"><a href="#"><i class="fa fa-link"></i> <span>Project 4</span></a></li>
+				</ul>
+			</section>
+		</aside>
+		<div class="content-wrapper">
+			<section class="content-header">
+				<h1>
+					Recognition and Compute of expression
+				</h1>
+
+			</section>
+
+			<!-- Main content -->
+			<section class="content container-fluid">
+				<form id="form_p" method="post">
+					<div class="form-group">
+						<input type='file' id="imgInp" />
+						<img style="height: 300px; max-width: 1000px;" id="blah"  />
+					</div>
+					<button id = "submit" click = predict() style="margin-left: 10px" type="button" class="btn btn-danger"><i class="fa fa-cogs" aria-hidden="true"></i> Predict and Compute expression</button>
+					<!-- <div class="btn btn-success" id = "submit" click = predict()>Predict</div> -->
+				</form>
+				<br>
+				<div id="display" class="btn btn-light btn-lg text-danger" role="alert" style="display:none; font-size: medium;"></div>
+				<br>
+				<div id="result" class="btn btn-light btn-lg text-danger" role="alert" style="display:none; font-size: medium;"></div>
+			</section>
+
+		</div>
+		<footer class="main-footer" style="background-image: url('{{ url_for('static',filename='images/ngang.jpg')}}');">
+		</footer>
+		<aside class="control-sidebar control-sidebar-dark">
+			<ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+				<li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
+				<li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
+			</ul>
+		</aside>
+		<div class="control-sidebar-bg"></div>
+
+		<script src="{{ url_for('static', filename = 'jquery.min.js') }}"></script>
+		<script src="{{ url_for('static', filename = 'bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+		<script src="{{ url_for('static', filename = 'dist/js/adminlte.min.js') }}"></script>
+		<script type="text/javascript">
+			function readURL(input) {
+				if (input.files && input.files[0]) {
+					var reader = new FileReader();
+
+					reader.onload = function (e) {
+						$('#blah').attr('src', e.target.result);
+					}
+
+					reader.readAsDataURL(input.files[0]);
+				}
+			}
+
+			$("#imgInp").change(function(){
+				readURL(this);
+			});
+		</script>
+		<script type="text/javascript" src="{{ url_for('static', filename = 'mn.js') }}"></script>
+	</body>
+	</html>
